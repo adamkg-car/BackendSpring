@@ -69,7 +69,7 @@ class UserControllerTest {
 
 	@Test
 	@WithMockUser(authorities = "ADMIN")
-	public void testGetUsers() throws Exception {
+	void testGetUsers() throws Exception {
 		MvcResult result = mockMvc.perform(get("https://localhost:" + port + "/user/users"))
 				.andExpect(status().is(HttpStatus.OK.value())).andReturn();
 
@@ -78,7 +78,7 @@ class UserControllerTest {
 
 	@Test
 	@WithMockUser(authorities = "ADMIN")
-	public void testGetFirstUserByID() throws Exception {
+	void testGetFirstUserByID() throws Exception {
 		MvcResult result = mockMvc.perform(get("https://localhost:" + port + "/user/users/1"))
 				.andExpect(status().is(HttpStatus.OK.value())).andReturn();
 		output(result.getResponse().getStatus()); 
@@ -86,7 +86,7 @@ class UserControllerTest {
 
 	@Test
 	@WithMockUser(authorities = "ADMIN")
-	public void testGetAdminUserByUsername() throws Exception {
+	void testGetAdminUserByUsername() throws Exception {
 		MvcResult result = mockMvc.perform(get("https://localhost:" + port + "/user/users?username=admin"))
 				.andExpect(status().is(HttpStatus.OK.value())).andReturn();
 		output(result.getResponse().getStatus()); 
@@ -95,7 +95,7 @@ class UserControllerTest {
 	@Disabled // Activate when you want to try it out - currently deactivated!
 	@Test
 	@WithMockUser(authorities = "ADMIN")
-	public void testCreateUser() throws Exception {
+	void testCreateUser() throws Exception {
 		  User user = new User();
 		  user.setUsername("new_user");
 		  user.setPassword("new_password");
@@ -116,7 +116,7 @@ class UserControllerTest {
 	// Set correct id for user you want to change!
 	@Test
 	@WithMockUser(authorities = "ADMIN")
-	public void testUpdateUser() throws Exception {
+	void testUpdateUser() throws Exception {
 		  User user = new User();
 		  user.setId(2);
 		  user.setUsername("new_user_updated");
@@ -138,7 +138,7 @@ class UserControllerTest {
 //	@Disabled // Activate when you want to try it out - currently deactivated!
 	@Test
 	@WithMockUser(authorities = "ADMIN")
-	public void testDeleteUserByID() throws Exception {
+	void testDeleteUserByID() throws Exception {
 		  User user = new User();
 		  user.setId(2);
 		  
